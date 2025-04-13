@@ -22,8 +22,6 @@ char	*ft_strstr(char *str, char *to_find)
 		return (str);
 	while (*str)
 	{
-		while (*str && (*str != to_find[match_len]))
-			str++;
 		while (*str && (*str == to_find[match_len]))
 		{
 			str++;
@@ -31,9 +29,9 @@ char	*ft_strstr(char *str, char *to_find)
 		}
 		if (to_find[match_len] == '\0')
 			return (str - match_len);
-		if (*str != '\0')
+		else
 		{
-			str -= match_len - 1;
+			str -= (match_len - 1);
 			match_len = 0;
 		}
 	}

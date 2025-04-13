@@ -10,29 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 
 int	is_lowercase(char c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
+	return ((c >= 'a' && c <= 'z'));
 }
 
 int	is_uppercase(char c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
+	return ((c >= 'A' && c <= 'Z'));
 }
 
 int	is_alpha_num(char c)
 {
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	return (((c >= 'a' && c <= 'z')
+			|| (c >= 'A' && c <= 'Z')
+			|| (c >= '0' && c <= '9')));
 }
 
 char	*ft_strcapitalize(char *str)
@@ -60,7 +54,7 @@ char	*ft_strcapitalize(char *str)
 /*
 int	main(void)
 {
-	char	str[] = "oi, tUdo bEm? 42paLaVras quArenta-e-duas; cinquenta+e+um";
+	char	str[] = "oi, tUdo bEm? 42paLaVras QuArenta-e-duas; cinquenta+e+um";
 
 	printf("%s\n", str);
 	ft_strcapitalize(str);

@@ -33,7 +33,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (src_len);
 }
 
-/*
+/* 
 int	main(void)
 {
 	char	*str1 = "abcdefghijklmnopqrstuvwxyz";

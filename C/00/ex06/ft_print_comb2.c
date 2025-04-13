@@ -12,53 +12,58 @@
 
 #include <unistd.h>
 
-struct s_num
+void	print_iteration(char ch1_1, char ch1_2, char ch2_1, char ch2_2)
 {
-	char	d1;
-	char	d2;
-};
-
-void	print_iteration(struct s_num first, struct s_num second)
-{
-	write(1, &first.d1, 1);
-	write(1, &first.d2, 1);
+	write(1, &ch1_1, 1);
+	write(1, &ch1_2, 1);
 	write(1, " ", 1);
-	write(1, &second.d1, 1);
-	write(1, &second.d2, 1);
-	if (!(first.d1 == '9' && first.d2 == '8'
-			&& second.d1 == '9' && second.d2 == '9'))
+	write(1, &ch2_1, 1);
+	write(1, &ch2_2, 1);
+	if (!(ch1_1 == '9' && ch1_2 == '8'
+			&& ch2_1 == '9' && ch2_2 == '9'))
 		write(1, ", ", 2);
 }
 
-void	increment_num(struct s_num *n)
+void	increment_num(char *ch1, char *ch2)
 {
-	if (n->d2 == '9')
+	if (*ch2 == '9')
 	{
-		n->d1++;
-		n->d2 = '0';
+		(*ch1)++;
+		*ch2 = '0';
 	}
 	else
-		n->d2++;
+		(*ch2)++;
 }
 
 void	ft_print_comb2(void)
 {
-	struct s_num	number1;
-	struct s_num	number2;
+	char	ch1_1;
+	char	ch1_2;
+	char	ch2_1;
+	char	ch2_2;
 
-	number1.d1 = '0';
-	number1.d2 = '0';
-	number2.d1 = '0';
-	number2.d2 = '1';
-	while (!(number1.d1 == '9' && number1.d2 == '9'))
+	ch1_1 = '0';
+	ch1_2 = '0';
+	ch2_1 = '0';
+	ch2_2 = '1';
+	while (!(ch1_1 == '9' && ch1_2 == '9'))
 	{
-		while (number2.d1 <= '9' && number2.d2 <= '9')
+		while (ch2_1 <= '9' && ch2_2 <= '9')
 		{
-			print_iteration(number1, number2);
-			increment_num(&number2);
+			print_iteration(ch1_1, ch1_2, ch2_1, ch2_2);
+			increment_num(&ch2_1, &ch2_2);
 		}
-		increment_num(&number1);
-		number2 = number1;
-		increment_num(&number2);
+		increment_num(&ch1_1, &ch1_2);
+		ch2_1 = ch1_1;
+		ch2_2 = ch1_2;
+		increment_num(&ch2_1, &ch2_2);
 	}
 }
+
+/* 
+int	main(void)
+{
+	ft_print_comb2();
+	return (0);
+}
+*/

@@ -21,16 +21,15 @@ void	put_escaped_hex(char c)
 	c /= 16;
 	hex_code[1] = remainder;
 	if (hex_code[1] > 9)
-		hex_code[1] = hex_code[1] - 10 + 'a';
+		hex_code[1] = 'a' + (hex_code[1] - 10);
 	else
-		hex_code[1] = hex_code[1] + '0';
+		hex_code[1] += '0';
 	remainder = c % 16;
-	c /= 16;
 	hex_code[0] = remainder;
 	if (hex_code[0] > 9)
-		hex_code[0] = hex_code[0] - 10 + 'a';
+		hex_code[0] = 'a' + (hex_code[0] - 10);
 	else
-		hex_code[0] = hex_code[0] + '0';
+		hex_code[0] += '0';
 	write(1, "\\", 1);
 	write(1, hex_code, 2);
 }
@@ -47,11 +46,11 @@ void	ft_putstr_non_printable(char *str)
 	}
 }
 
-
+/* 
 int	main(void)
 {
-	char	*str = "Hello \n \t \b";
+	char	*str = "Hello \n \t \b \r";
 	ft_putstr_non_printable(str);
 	return (0);
 }
-
+*/
