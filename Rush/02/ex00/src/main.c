@@ -6,7 +6,7 @@
 /*   By: brensant <brensant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 11:42:01 by bfernan2          #+#    #+#             */
-/*   Updated: 2025/03/30 18:37:13 by brensant         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:03:45 by brensant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,23 @@ void	ft_exec(char *number, t_key_value *dict, unsigned int dict_lines);
 
 int	validate_number(char *str)
 {
-	if (ft_atoi(str) == -1)
+	int	res;
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	res = ft_atoi(str);
+	if (res == -1)
 		return (0);
+	if (res == 0)
+	{
+		write(1, "zero", 4);
+		return (-2);
 	}
 	return (1);
 }
@@ -45,10 +59,11 @@ int	main(int argc, char *argv[])
 	{
 		if (validate_number(argv[1]))
 			ft_exec(argv[1], dict_buffer, dict_lines);
-		else
-			write(1, "Error\n", 6);
+		else if (validate_number(argv[1]) != -2)
+			write(1, "Error", 6);
 	}
 	else
-		write(1, "Error\n", 6);
+		write(1, "Error", 6);
+	write(1, "\n", 1);
 	return (0);
 }

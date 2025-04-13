@@ -1,7 +1,7 @@
-NAME=rush-02
-
 SRC_DIR=./src
 INC_DIR=./include
+
+NAME=$(SRC_DIR)/rush-02
 
 SRC_FILES =$(SRC_DIR)/ft_strncmp.c \
             $(SRC_DIR)/ft_exec.c \
@@ -12,6 +12,7 @@ SRC_FILES =$(SRC_DIR)/ft_strncmp.c \
             $(SRC_DIR)/main.c \
             $(SRC_DIR)/ft_atoi.c \
             $(SRC_DIR)/ft_strstr.c \
+			$(SRC_DIR)/ft_search_n_digits.c \
             $(SRC_DIR)/ft_search_group.c
 
 HEADER_FILES =$(INC_DIR)/string_funcs.h \
